@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import Shows from './components/Shows';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="ui container">
+      <h1>
+        Radio Archive
+      </h1>
+      			<h1>Past Shows:</h1>
+
+      <div className="ui five doubling stackable cards">
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+        <Shows />
+
+      </div>
+
     </div>
   );
 }
