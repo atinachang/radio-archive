@@ -1,4 +1,5 @@
 const express = require('express');
+// const cors = require('cors');
 const app = express();
 
 
@@ -9,7 +10,7 @@ const uri = 'mongodb://localhost:27017/radio-archive';
 // where are SERVER will run, not DB
 const PORT = 5000;
 
-const showRouter = require('../src/routes/archives');
+const showRouter = require('./routes/archives');
 
 // Connect to database
 mongoose
@@ -21,6 +22,7 @@ mongoose
     console.log(err.message);
   })
 
+// app.use(cors());  
 // Express body parser middleware
 app.use(express.json({ extended: false }));
 

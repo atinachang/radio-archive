@@ -1,52 +1,36 @@
 import {useEffect, useState} from 'react';
+import { Link, Route, Switch } from "react-router-dom";
+
 import Shows from './components/Shows';
+import axios from 'axios';
+import Header from './components/Header'
+import AddShow from './components/AddShow';
 
-
-const headers = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
 
 function App() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    const fetchShows = async () => {
-      //GET shows
-      const response = await fetch('http://localhost:5000/shows',
-      {
-        method: 'GET',
-        headers,
-      }
-      );
-      const data = await response.json()
-      console.log(data);
-    }
-    fetchShows()
-  }, [])
+    axios.get('http://localhost:3000/shows')
+    .then(res => {
+      setShows(res.data)
+    })
+
+  },
+   [])
   return (
     <div className="ui container">
-      <h1>
-        Radio Archive
-      </h1>
-      			<h1>Past Shows:</h1>
+      {/* <Router>
+        <Route path="/upload" component={Header}/>
+      </Router> */}
+      <Header />
 
-      <div className="ui five doubling stackable cards">
+      <Switch>
+        <Route path="/upload" component={AddShow}/>        
+      </Switch>
         <Shows shows={shows}/>
-        {/* <Shows />
-        <Shows />
-        <Shows />
-        <Shows />
-        <Shows />
-        <Shows />
-        <Shows />
-        <Shows />
-        <Shows /> */}
-
       </div>
-
-    </div>
-  );
-}
+  )
+    }
 
 export default App;

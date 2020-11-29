@@ -7,7 +7,8 @@ const archiveSchema = new Schema({
 	date: 
 	{ type: Date,
 	default: Date.now },
-	link: String
+	iframe: String,
+	tags: String,
 });
 
 module.exports =  mongoose.model("Show", archiveSchema);
