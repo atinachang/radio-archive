@@ -22,13 +22,14 @@ mongoose
     console.log(err.message);
   })
 
-// app.use(cors());  
+
 // Express body parser middleware
 app.use(express.json({ extended: false }));
 
 // TODO
 // Define Routes
-app.use('/shows', showRouter)
+app.use('/api/shows', showRouter);
+
 
 // Start server
 app.listen(PORT, () => {

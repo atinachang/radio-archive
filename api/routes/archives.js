@@ -14,15 +14,14 @@ router.get('/', async (req, res) => {
 
 // POST /shows/add
 router.post('/add', async (req, res) => {
-	const {host, description, date, iframe, link, tags} = req.body;
-	console.log(iframe, "this is the iframe")
+	const {host, description, date, iframe, tags} = req.body;
+	// console.log(host, description, date, iframe, tags)
 	// instance of our model
 	const newShow = new Archive({
 		host, 
 		description,
 		date,
 		iframe, 
-		link, 
 		tags
 	})
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Field = ({ name, label, value, placeholder, onChange }) => (
-  <div>
+  <div className="field">
     <label htmlFor={`field-${name}`}>{label}</label>
     <input
       id={`field-${name}`}

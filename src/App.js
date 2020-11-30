@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react';
 import { Link, Route, Switch } from "react-router-dom";
 
 import Shows from './components/Shows';
+// import ArchivePage from './components/ArchivePage';
 import axios from 'axios';
 import Header from './components/Header'
 import AddShow from './components/AddShow';
@@ -11,7 +12,7 @@ function App() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/shows')
+    axios.get('/api/shows')
     .then(res => {
       setShows(res.data)
     })
@@ -27,8 +28,8 @@ function App() {
 
       <Switch>
         <Route path="/upload" component={AddShow}/>        
+        <Route exact path="/" render={() => <Shows shows={shows}/>} />
       </Switch>
-        <Shows shows={shows}/>
       </div>
   )
     }

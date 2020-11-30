@@ -4,63 +4,75 @@ import Field from './Field';
 
 const AddShow = (props) => {
 	const [host, setHost] = useState("");
-	const [desc, setDesc] = useState("");
-	const [date, setDate] = useState(Date.now());
+	const [description, setDescription] = useState("");
+	const [date, setDate] = useState("YYYY-MM-DD");
 	const [iframe, setIframe] = useState("");
 	const [tags, setTags] = useState("");
 
-	const addShow = (e) => {
-		e.preventtDefault();
-    // try {
-    //   const response = await fetch("/api/", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ host, desc, date, iframe, tags })
-    //   });
-    //   if (response.ok) {
-    //     props.onAdd();
-    //   } else {
-    //     console.log("Error when saving record");
-    //   }
-    // } catch (e) {
-    //   console.log(e);
-		// }	
-	}
 
+const addRecord = async e => {
+ e.preventDefault();
+ try {
+   const response = await fetch("/api/shows/add", {
+     method: "POST",
+     headers: { "Content-Type": "application/json" },
+     // Add address here:
+     body: JSON.stringify({ host, description, date, iframe, tags})
+	 });
+      if (response.ok) {
+        props.onAdd();
+      } else {
+        console.log("Error when saving record");
+      }
+    } catch (e) {
+      console.log(e);
+		}
+	} 
+	
+	
 	return (
 		<Fragment>
-			<form onSubmit={addShow}>
-				<Field 
-					label="Host Name"
-          value={host}
-          name="host name"
-          onChange={e => setHost(e.target.value)}
+			<form onSubmit={addRecord}>
+				<div className="ui equal width form">
+					<div className="fields">
+				<Field
+				label="Host Name"
+				value={host}
+				name="host name"
+				onChange={e =>
+				setHost(e.target.value)
+				}
 				/>
-				<Field 
-					label="Description"
-          value={desc}
-          name="description"
-          onChange={e => setDesc(e.target.value)}
+				<Field
+				label="Description"
+				value={description}
+				name="description"
+				onChange={e => setDescription(e.target.value)}
 				/>
-				<Field 
-					label="Date"
-          value={date}
-          name="Date"
-          onChange={e => setDate(e.target.value)}
+				</div>
+				<div className="fields">
+				<Field
+				label="Date"
+				value={date}
+				name="Date"
+				onChange={e => setDate(e.target.value)}
 				/>
-				<Field 
-					label="File Link"
-          value={iframe}
-					name="file link"
-					placeholder="mixcloud - Picture Widget"
-          onChange={e => setIframe(e.target.value)}
+				<Field
+				label="File Link"
+				value={iframe}
+				name="file link"
+				placeholder="link from picture widget"
+				onChange={e => setIframe(e.target.value)}
 				/>
-			<Field 
-					label="tags"
-          value={tags}
-          name="tag"
-          onChange={e => setTags(e.target.value)}
+				<Field
+				label="tags"
+				value={tags}
+				name="tag"
+				onChange={e => setTags(e.target.value)}
 				/>
+				</div>
+				</div>
+				<input className="ui button" type="submit" value="Save" />
 			</form>
 		</Fragment>
 	)
