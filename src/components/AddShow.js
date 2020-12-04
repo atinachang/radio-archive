@@ -1,4 +1,6 @@
 import React, {Fragment, useState} from 'react';
+import {useHistory} from 'react-router-dom';
+// import router from '../../api/routes'
 
 import Field from './Field';
 
@@ -9,8 +11,9 @@ const AddShow = (props) => {
 	const [iframe, setIframe] = useState("");
 	const [tags, setTags] = useState("");
 
-
-const addRecord = async e => {
+	
+	let history = useHistory();
+const addRecord = async (e) => {
  e.preventDefault();
  try {
    const response = await fetch("/api/shows/add", {
@@ -27,8 +30,11 @@ const addRecord = async e => {
     } catch (e) {
       console.log(e);
 		}
+		history.push('/')
+		window.location.reload(false);
+
 	} 
-	
+
 	
 	return (
 		<Fragment>
@@ -58,21 +64,23 @@ const addRecord = async e => {
 				onChange={e => setDate(e.target.value)}
 				/>
 				<Field
-				label="File Link"
-				value={iframe}
-				name="file link"
-				placeholder="link from picture widget"
-				onChange={e => setIframe(e.target.value)}
-				/>
-				<Field
 				label="tags"
 				value={tags}
 				name="tag"
 				onChange={e => setTags(e.target.value)}
 				/>
+				<Field
+				label="File Link"
+				value={iframe}
+				name="file link"
+				placeholder="Insert ONLY the link contained in the iframe embed from the Picture Widget"
+				onChange={e => setIframe(e.target.value)}
+				/>
+					{/* <span>Insert ONLY the link contained in the iframe embed from the Picture Widget</span> */}
+
 				</div>
 				</div>
-				<input className="ui button" type="submit" value="Save" />
+				<button className="ui button" type="submit" value="Save">Save</button>
 			</form>
 		</Fragment>
 	)

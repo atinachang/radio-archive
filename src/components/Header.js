@@ -12,7 +12,9 @@ const Header = () => {
 				</h1>
 				</Link>
 				<div className="right menu">
-					<Link to="/upload">Upload</Link>
+					<h3>
+						<Link to="/upload">Upload/Admin</Link>
+					</h3>
 				</div>
 			</div>
 

@@ -7,3 +7,10 @@
 	width: 200px;
 	margin: 10px;
 }
+
+.shows-archive {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
