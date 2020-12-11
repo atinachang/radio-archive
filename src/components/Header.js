@@ -13,7 +13,7 @@ const Header = () => {
 				</Link>
 				<div className="right menu">
 					<h3>
-						<Link to="/upload">Upload/Admin</Link>
+						<Link to="/login">Upload/Admin</Link>
 					</h3>
 				</div>
 			</div>

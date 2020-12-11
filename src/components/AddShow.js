@@ -7,7 +7,7 @@ import Field from './Field';
 const AddShow = (props) => {
 	const [host, setHost] = useState("");
 	const [description, setDescription] = useState("");
-	const [date, setDate] = useState("YYYY-MM-DD");
+	const [date, setDate] = useState("");
 	const [iframe, setIframe] = useState("");
 	const [tags, setTags] = useState("");
 
@@ -25,20 +25,20 @@ const addRecord = async (e) => {
       if (response.ok) {
         props.onAdd();
       } else {
-        console.log("Error when saving record");
+				console.log("Error when saving record");
       }
     } catch (e) {
-      console.log(e);
+			console.log(e);
 		}
 		history.push('/')
 		window.location.reload(false);
-
 	} 
+
 
 	
 	return (
 		<Fragment>
-			<form onSubmit={addRecord}>
+			<form onSubmit={addRecord} className="ui form error">
 				<div className="ui equal width form">
 					<div className="fields">
 				<Field
@@ -47,8 +47,7 @@ const addRecord = async (e) => {
 				name="host name"
 				onChange={e =>
 				setHost(e.target.value)
-				}
-				/>
+				} />
 				<Field
 				label="Description"
 				value={description}
@@ -61,10 +60,11 @@ const addRecord = async (e) => {
 				label="Date"
 				value={date}
 				name="Date"
+				placeholder="YYYY-MM-DD"
 				onChange={e => setDate(e.target.value)}
 				/>
 				<Field
-				label="tags"
+				label="Tags"
 				value={tags}
 				name="tag"
 				onChange={e => setTags(e.target.value)}
@@ -76,7 +76,6 @@ const addRecord = async (e) => {
 				placeholder="Insert ONLY the link contained in the iframe embed from the Picture Widget"
 				onChange={e => setIframe(e.target.value)}
 				/>
-					{/* <span>Insert ONLY the link contained in the iframe embed from the Picture Widget</span> */}
 
 				</div>
 				</div>

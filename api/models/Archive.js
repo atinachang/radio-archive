@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const archiveSchema = new Schema({
-	host: String,
+	host: {
+		type:String,
+		required: true,
+	},
 	description: String,
 	date: 
 	{ type: Date,
