@@ -33,20 +33,7 @@ app.use('/api/shows', showRouter);
 app.use('/api/users', userRouter)
 
 
-// hashing password
-const password = 'admin123';
-const hashPassword = async () => {
-  const hash = await bcrypt.hash(password, 12)
-}
 
-hashPassword()
-
-const hashedPW = '$2b$12$JMF.gB.rwVinlW9ui2XfHOx/qUu2.uTlovS/k75sFQmVY2pEdF3EO';
-const comparePW = async () => {
-  const isSame = await bcrypt.compare(password, hashedPW);
-}
-
-comparePW();
 
 // server.js at the very end of the file.
 // console.log(process.env.NODE_ENV)
