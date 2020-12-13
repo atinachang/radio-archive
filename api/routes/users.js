@@ -4,7 +4,6 @@ const {createUser, findUserByID, findUserByEmail} = require('../controllers/user
 const {createToken} = require('../tokens/tokenService');
 const {verifyToken} = require('../middleware/verifyToken');
 
-// const User = require('../models/User');
 
 router.route('/')
 .post(async (req ,res) => {

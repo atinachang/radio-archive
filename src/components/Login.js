@@ -1,10 +1,8 @@
 import { Fragment, useState } from 'react';
-import {Link} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
 import Field from './Field';
 
-// how do i get the user to kick to the /upload page after logging in?
-// getting 500 error upon login
 
 const Login = (props) => {
 	const [email, setEmail] = useState("")
@@ -12,7 +10,7 @@ const Login = (props) => {
   const [ error, setError ] = useState('');
 
 
-	// this is currently making a new user, but i want it to check the user and proceed?
+	let history = useHistory();
 	const handleSubmit = async (e) => {
 		try {
 			e.preventDefault();
@@ -32,7 +30,9 @@ const Login = (props) => {
     } catch (err) {
 			console.log(err.message);
 			setError(err.message)
-    }
+		}
+		history.push('/upload')
+		
 	};
 	
 	return (
