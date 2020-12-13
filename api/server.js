@@ -49,7 +49,7 @@ const comparePW = async () => {
 comparePW();
 
 // server.js at the very end of the file.
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./build'));
     // only add this part if you are using React Router
@@ -75,7 +75,7 @@ mongoose
 
     )
   .then(() => {
-    console.log(`Successfully connected to: ${uri} `);
+    console.log(`Successfully connected to: ${DB_URI} `);
   })
   .catch( err => {
     console.log(err.message);
