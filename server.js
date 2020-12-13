@@ -16,8 +16,8 @@ const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/radio-archive';
 // where are SERVER will run, not DB
 const PORT = process.env.PORT || '5000';
 
-const showRouter = require('./routes/archives');
-const userRouter = require('./routes/users')
+const showRouter = require('./api/routes/archives');
+const userRouter = require('./api/routes/users')
 
 
 
