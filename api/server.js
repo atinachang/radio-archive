@@ -19,22 +19,7 @@ const PORT = process.env.PORT || '5000';
 const showRouter = require('./routes/archives');
 const userRouter = require('./routes/users')
 
-// Connect to database
-mongoose
-  .connect(DB_URI,     
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    },
 
-    )
-  .then(() => {
-    console.log(`Successfully connected to: ${uri} `);
-  })
-  .catch( err => {
-    console.log(err.message);
-  })
 
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
@@ -78,3 +63,20 @@ if (process.env.NODE_ENV === 'production') {
 app.listen(PORT, () => {
   console.log(`Server on port ${PORT}`);
 })
+
+// Connect to database
+mongoose
+  .connect(DB_URI,     
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    },
+
+    )
+  .then(() => {
+    console.log(`Successfully connected to: ${uri} `);
+  })
+  .catch( err => {
+    console.log(err.message);
+  })
