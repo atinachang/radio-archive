@@ -7,6 +7,10 @@ const cookieParser = require('cookie-parser');
 
 // bring in mongoose
 const mongoose = require('mongoose');
+
+// bring in path?
+const path = require("path");
+
 // connection string to LOCAL DB
 const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/radio-archive';
 // where are SERVER will run, not DB
