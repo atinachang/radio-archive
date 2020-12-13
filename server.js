@@ -1,37 +1,35 @@
 const express = require('express');
-const app = express();
-const bcrypt = require('bcrypt');
-const cookieParser = require('cookie-parser');
-
-//mongodb+srv://admin:53RCx09szrKdZ0OK@shows.c8z3g.mongodb.net/ISO?retryWrites=true&w=majority
-
+// const bcrypt = require('bcrypt');
 // bring in mongoose
 const mongoose = require('mongoose');
-
+// const cookieParser = require('cookie-parser');
 // bring in path?
 const path = require("path");
-
-// connection string to LOCAL DB
-const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/radio-archive';
-// where are SERVER will run, not DB
-const PORT = process.env.PORT || '5000';
-
 const showRouter = require('./api/routes/archives');
 const userRouter = require('./api/routes/users')
 
+//mongodb+srv://admin:53RCx09szrKdZ0OK@shows.c8z3g.mongodb.net/ISO?retryWrites=true&w=majority
 
 
-app.use(cookieParser())
+// connection string to LOCAL DB
+// const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/radio-archive';
+const DB_URI = 'mongodb+srv://admin:53RCx09szrKdZ0OK@shows.c8z3g.mongodb.net/ISO?retryWrites=true&w=majority';
+// where are SERVER will run, not DB
+const PORT = process.env.PORT || '5000';
+
+const app = express();
+
+// app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 // Express body parser middleware
 app.use(express.json({ extended: false }));
+// app.use(express.json())
 
 // TODO
 // Define Routes
 app.use('/api/shows', showRouter);
 app.use('/api/users', userRouter)
-
 
 
 
@@ -46,12 +44,9 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server on port ${PORT}`);
-})
 
 // Connect to database
+// console.log(DB_URI)
 mongoose
   .connect(DB_URI,     
     {
@@ -62,7 +57,12 @@ mongoose
 
     )
   .then(() => {
-    console.log(`Successfully connected to: ${DB_URI} `);
+    // console.log(`Successfully connected to: ${DB_URI} `);
+    // Start server
+app.listen(PORT, () => {
+  console.log(`Successfully connect to: port ${PORT}`);
+})
+
   })
   .catch( err => {
     console.log(err.message);

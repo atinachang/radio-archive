@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start:client": "BROWSER=firefox react-scripts start",
-    "start:server": "nodemon 'api/server.js' --ignore 'src' ",
+    "start:server": "nodemon 'server.js' --ignore 'src' ",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "react-scripts build",
