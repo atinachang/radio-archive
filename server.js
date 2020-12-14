@@ -5,16 +5,12 @@ const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 
-dotenv.config();
-
 // bring in path?
 const path = require("path");
 const showRouter = require('./api/routes/archives');
 const userRouter = require('./api/routes/users')
 
-//mongodb+srv://admin:53RCx09szrKdZ0OK@shows.c8z3g.mongodb.net/ISO?retryWrites=true&w=majority
-
-
+dotenv.config();
 // connection string to LOCAL DB
 // const DB_URI = 'mongodb+srv://admin:HSoeJSaYnVTktjwd@cluster0.njomo.mongodb.net/radio-archive?retryWrites=true&w=majority';
 const DB_URI = process.env.DB_URI;
@@ -24,12 +20,8 @@ const DB_URI = process.env.DB_URI;
 const PORT = process.env.PORT || '5000';
 // const PORT = '5000'
 
-const showRouter = require('./api/routes/archives');
-const userRouter = require('./api/routes/users')
 
-
-
-// app.use(cookieParser())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 // Express body parser middleware
