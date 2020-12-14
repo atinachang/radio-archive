@@ -1,7 +1,9 @@
 import React, {Fragment} from 'react';
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+
+
 	return (
 		<Fragment>
 			<div className="ui secondary pointing menu">

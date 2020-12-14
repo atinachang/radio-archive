@@ -75,13 +75,13 @@ function App() {
           if (!user) {
             return <Login getUser={getUser} {...props} />
           }
-          return <Redirect to="/upload" />
+        return <Redirect to="/upload" />
         }} />
         {/* once finished with upload page, redirect to Shows.js */}
 
         <Route path="/upload" component={AddShow} />
-        </Switch> 
 
+        </Switch>
         <Footer />
       </div>
   )

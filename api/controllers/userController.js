@@ -9,8 +9,7 @@ try {
 	const user = await newUser.save();
 	return user;
 } catch(err) {
-  console.log(err)
-  throw err;
+	throw err
 }
 }
 
