@@ -9,11 +9,10 @@ exports.createToken = (user) => {
 exports.verifyToken = async (token) => {
   let user;
   jwt.verify(token, KEY, (err, decoded) => {
-    console.log(err);
     if (err)  {
+      console.log(err)
       throw err;
     }
-
     user = decoded;
   });
 

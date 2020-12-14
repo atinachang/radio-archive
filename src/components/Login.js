@@ -1,6 +1,5 @@
 import { Fragment, useState } from 'react';
-import {Link} from 'react-router-dom';
-
+import {useHistory} from 'react-router-dom';
 import Field from './Field';
 
 // how do i get the user to kick to the /upload page after logging in?
@@ -13,6 +12,7 @@ const Login = (props) => {
 
 
 	// this is currently making a new user, but i want it to check the user and proceed?
+	let history = useHistory()
 	const handleSubmit = async (e) => {
 		try {
 			e.preventDefault();
@@ -22,8 +22,10 @@ const Login = (props) => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
-      });
-      const data = await response.json();
+			});
+			console.log(response)
+			const data = await response.json();
+			console.log(data)
       if (!response.ok) {
         throw new Error(data.message);
       }
@@ -32,7 +34,8 @@ const Login = (props) => {
     } catch (err) {
 			console.log(err.message);
 			setError(err.message)
-    }
+		}
+		history.push('/upload')
 	};
 	
 	return (

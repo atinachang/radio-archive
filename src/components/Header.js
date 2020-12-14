@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
-import { Link, Route, Switch } from "react-router-dom";
-import AddShow from './AddShow';
+import { Link} from "react-router-dom";
 
 const Header = () => {
 	return (
@@ -13,7 +12,7 @@ const Header = () => {
 				</Link>
 				<div className="right menu">
 					<h3>
-						<Link to="/login">Upload/Admin</Link>
+						<Link to="/login">Admin</Link>
 					</h3>
 				</div>
 			</div>

@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
+// const bcrypt = require('bcrypt');
 const {createUser, findUserByID, findUserByEmail} = require('../controllers/userController');
 const {createToken} = require('../tokens/tokenService');
 const {verifyToken} = require('../middleware/verifyToken');
 
-// const User = require('../models/User');
 
 router.route('/')
 .post(async (req ,res) => {
@@ -87,6 +87,23 @@ router
 		}
 	});
 
+
+// hashing password
+// const password = 'admin123';
+// const hashPassword = async () => {
+//   const hash = await bcrypt.hash(password, 12)
+//   // console.log(hash)
+// }
+
+// hashPassword()
+
+// const hashedPW = '$2b$12$JMF.gB.rwVinlW9ui2XfHOx/qUu2.uTlovS/k75sFQmVY2pEdF3EO';
+// const comparePW = async () => {
+//   const isSame = await bcrypt.compare(password, hashedPW);
+//   // console.log(isSame)
+// }
+
+// comparePW();
 // set up only 1 admin email and password
 	
 	module.exports = router;

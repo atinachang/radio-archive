@@ -1,10 +1,6 @@
 import '../styles.css'
-// import Filter from './Filter';
-
 
 const Shows = ({shows})=> {
-
-  
 const showsRev = shows.slice().reverse();
 
   return (
@@ -18,7 +14,7 @@ const showsRev = shows.slice().reverse();
         <div key={show._id} className="card">
           <div className="ui fluid card">
             <div className="image">
-            <iframe width="100%" height="100%" src={show.iframe} frameBorder="0" ></iframe> </div>
+            <iframe width="100%" height="100%" src={show.iframe} title={show._id}frameBorder="0" ></iframe> </div>
             <div className="content">
               <div className="header">{show.host}</div>
               <p style={{textTransform:"capitalize"}}>{show.description}</p>

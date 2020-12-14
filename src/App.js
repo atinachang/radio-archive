@@ -2,12 +2,14 @@ import {useEffect, useState, useCallback} from 'react';
 import {
   Route,
   Switch,
+  Redirect
 } from "react-router-dom";
 
 import Header from './components/Header'
 import AddShow from './components/AddShow';
 import Login from './components/Login';
 import Shows from './components/Shows';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -62,7 +64,6 @@ function App() {
     <div className="ui container">
 
       <Header />
-
         <Switch>
           
           {/* on intial render, show the Shows.js page with a log in button */}
@@ -74,11 +75,14 @@ function App() {
           if (!user) {
             return <Login getUser={getUser} {...props} />
           }
-          return <AddShow />
+          return <Redirect to="/upload" />
         }} />
         {/* once finished with upload page, redirect to Shows.js */}
 
-        </Switch>
+        <Route path="/upload" component={AddShow} />
+        </Switch> 
+
+        <Footer />
       </div>
   )
     }
