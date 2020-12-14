@@ -9,6 +9,11 @@ dotenv.config();
 
 // bring in path?
 const path = require("path");
+const showRouter = require('./api/routes/archives');
+const userRouter = require('./api/routes/users')
+
+//mongodb+srv://admin:53RCx09szrKdZ0OK@shows.c8z3g.mongodb.net/ISO?retryWrites=true&w=majority
+
 
 // connection string to LOCAL DB
 // const DB_URI = 'mongodb+srv://admin:HSoeJSaYnVTktjwd@cluster0.njomo.mongodb.net/radio-archive?retryWrites=true&w=majority';
@@ -24,11 +29,12 @@ const userRouter = require('./api/routes/users')
 
 
 
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }));
 
 // Express body parser middleware
 app.use(express.json({ extended: false }));
+// app.use(express.json())
 
 // TODO
 // Define Routes
@@ -48,12 +54,9 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server on port ${PORT}`);
-})
 
 // Connect to database
+// console.log(DB_URI)
 mongoose
   .connect(DB_URI,     
     {
@@ -64,7 +67,12 @@ mongoose
 
     )
   .then(() => {
-    console.log(`Successfully connected to: ${DB_URI} `);
+    // console.log(`Successfully connected to: ${DB_URI} `);
+    // Start server
+app.listen(PORT, () => {
+  console.log(`Successfully connect to: port ${PORT}`);
+})
+
   })
   .catch( err => {
     console.log(err.message);

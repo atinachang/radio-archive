@@ -106,4 +106,20 @@ router
 // comparePW();
 // set up only 1 admin email and password
 	
+
+
+// hashing password
+// const password = 'admin123';
+// const hashPassword = async () => {
+//   const hash = await bcrypt.hash(password, 12)
+// }
+
+// hashPassword()
+
+// const hashedPW = '$2b$12$JMF.gB.rwVinlW9ui2XfHOx/qUu2.uTlovS/k75sFQmVY2pEdF3EO';
+// const comparePW = async () => {
+//   const isSame = await bcrypt.compare(password, hashedPW);
+// }
+
+// comparePW();
 	module.exports = router;
