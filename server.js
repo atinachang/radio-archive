@@ -15,7 +15,7 @@ const userRouter = require('./api/routes/users')
 // console.log(dotenv.config())
 // connection string to LOCAL DB
 // const DB_URI = 'mongodb+srv://admin:3P1W5Pazgq1f6SZy@shows.c8z3g.mongodb.net/ISOretryWrites=true&w=majority';
-const DB_URI = process.env.DB_URI || 'mongodb://localhost:27017/radio-archive';
+const DB_URI = process.env.DB_URI || 'mongodb+srv://admin:3P1W5Pazgq1f6SZy@shows.c8z3g.mongodb.net/ISOretryWrites=true&w=majority' || 'mongodb://localhost:27017/radio-archive';
 // const DB_URI = 'mongodb://localhost:27017/radio-archive';
 // where are SERVER will run, not DB
 const PORT = process.env.PORT || '5000';
