@@ -34,8 +34,8 @@ app.use(express.json({ extended: false }));
 
 // TODO
 // Define Routes
-app.use('/api/shows', showRouter);
-app.use('/api/users', userRouter)
+app.use('/radio-archive/api/shows', showRouter);
+app.use('/radio-archive/api/users', userRouter)
 
 // app.get('/me', function(req, res) {
 //   res.cookie('cookie', 'express').send('cookie set');
