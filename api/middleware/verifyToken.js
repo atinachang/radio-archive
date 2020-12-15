@@ -3,6 +3,7 @@ const { verifyToken } = require('../tokens/tokenService');
 exports.verifyToken = async (req, res, next) => {
   const { cookies } = req;
   try {
+    console.log(cookies)
     if(!cookies || !cookies.token) {
       res.status(403).json({ message: 'authorization required '});
       return;

@@ -9,13 +9,13 @@ router.get('/', async (req, res) => {
 	// gets all radio show documents from collection
 	const shows = await Archive.find();
 	res.json(shows)
+	console.log(shows)
 })
 
 
 // POST /shows/add
 router.post('/add', async (req, res) => {
 	const {host, description, date, iframe, tags} = req.body;
-	// console.log(host, description, date, iframe, tags)
 	// instance of our model
 	const newShow = new Archive({
 		host, 

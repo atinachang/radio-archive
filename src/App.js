@@ -23,11 +23,11 @@ function App() {
           credentials: 'include',
         },
       });
+      console.log(response)
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json.message);
       }
-
       setShows(json);
     } catch (err) {
       setShows([]);
@@ -41,6 +41,7 @@ function App() {
           credentials: 'include',
         },
       });
+      console.log(response)
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json.message);
@@ -55,9 +56,9 @@ function App() {
   useEffect(() => {
    getShows();
    getUser();
-
   },
    [getShows, getUser])
+
 
 
   return (
