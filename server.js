@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 
 // bring in path?
-// const path = require("path");
+const path = require("path");
 const showRouter = require('./api/routes/archives');
 const userRouter = require('./api/routes/users')
 
