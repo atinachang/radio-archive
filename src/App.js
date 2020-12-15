@@ -14,7 +14,8 @@ import Footer from './components/Footer';
 
 function App() {
   const [shows, setShows] = useState([]);
-  const [user, setUser] = useState(undefined)
+  const [user, setUser] = useState(undefined);
+  const home = '/radio-archive';
 
   const getShows = useCallback(async function() {
     try {
@@ -62,25 +63,26 @@ function App() {
 
 
   return (
+    
     <div className="ui container">
 
-      <Header />
+      <Header home={home}/>
         <Switch>
           
           {/* on intial render, show the Shows.js page with a log in button */}
-        <Route exact path="/" component={() => <Shows shows={shows}/>} />
+        <Route exact path={home} component={() => <Shows shows={shows}/>} />
 
           {/* on login, i want the user to log in with admin creds. if successfully logged in, redirect to upload page */}
-        <Route path="/login"
+        <Route path={`${home}/login`}
         render={props => {
           if (!user) {
             return <Login getUser={getUser} {...props} />
           }
-        return <Redirect to="/upload" />
+        return <Redirect to={`${home}/upload`} />
         }} />
         {/* once finished with upload page, redirect to Shows.js */}
 
-        <Route path="/upload" component={AddShow} />
+        <Route path={`${home}/upload`} component={AddShow} />
 
         </Switch>
         <Footer />
