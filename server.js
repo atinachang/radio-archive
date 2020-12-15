@@ -45,15 +45,22 @@ app.use('/api/users', userRouter)
 
 // server.js at the very end of the file.
 // console.log(process.env.NODE_ENV)
+// if (process.env.NODE_ENV === 'production') {
+//     app.use(express.static('./build'));
+//     // only add this part if you are using React Router
+//     app.get('*', (req,res) =>{
+//         console.log(path.join(__dirname+'/build/index.html'));
+//         res.sendFile(path.join(__dirname+'/build/index.html'));
+//     });
+// }
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('./build'));
-    // only add this part if you are using React Router
-    app.get('*', (req,res) =>{
-        console.log(path.join(__dirname+'/build/index.html'));
-        res.sendFile(path.join(__dirname+'/build/index.html'));
-    });
+    app.use(express.static('./build'));
+    // only add this part if you are using React Router
+    app.get('*', (req,res) =>{
+        console.log(path.join('/build/index.html'));
+        res.sendFile(path.join('/build/index.html'));
+    });
 }
-
 
 // Connect to database
 mongoose.connect(DB_URI,     
