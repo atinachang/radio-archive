@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 function App() {
   const [shows, setShows] = useState([]);
   const [user, setUser] = useState(undefined);
-  const home = '/radio-archive';
+  // const home = '/radio-archive';
 
   const getShows = useCallback(async function() {
     try {
@@ -30,7 +30,9 @@ function App() {
         throw new Error(json.message);
       }
       setShows(json);
+      console.log(response)
     } catch (err) {
+      console.log(err)
       setShows([]);
     }
   }, []);
@@ -42,12 +44,12 @@ function App() {
           credentials: 'include',
         },
       });
-      console.log(response)
+      // console.log(response)
       const json = await response.json();
       if (!response.ok) {
         throw new Error(json.message);
       }
-
+      console.log(json.data)
       setUser(json.data);
     } catch (err) {
       setUser(undefined);
@@ -61,28 +63,27 @@ function App() {
    [getShows, getUser])
 
 
-
   return (
     
     <div className="ui container">
 
-      <Header home={home}/>
+      <Header />
         <Switch>
           
           {/* on intial render, show the Shows.js page with a log in button */}
-        <Route exact path={home} component={() => <Shows shows={shows}/>} />
+        <Route exact path="/" component={() => <Shows shows={shows}/>} />
 
           {/* on login, i want the user to log in with admin creds. if successfully logged in, redirect to upload page */}
-        <Route path={`${home}/login`}
+        <Route path="/login"
         render={props => {
           if (!user) {
             return <Login getUser={getUser} {...props} />
           }
-        return <Redirect to={`${home}/upload`} />
-        }} />
+        return <Redirect to="/upload" /> }} />
+         
         {/* once finished with upload page, redirect to Shows.js */}
 
-        <Route path={`${home}/upload`} component={AddShow} />
+        <Route path="/upload" component={AddShow} />
 
         </Switch>
         <Footer />

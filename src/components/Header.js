@@ -1,20 +1,20 @@
 import React, {Fragment} from 'react';
 import { Link } from "react-router-dom";
 
-const Header = ({home}) => {
+const Header = () => {
 
 
 	return (
 		<Fragment>
 			<div className="ui secondary pointing menu">
-				<Link to={home}>
+				<Link to="/">
 				<h1>
 					Radio Archive
 				</h1>
 				</Link>
 				<div className="right menu">
 					<h3>
-						<Link to={`${home}/login`}>Admin</Link>
+						<Link to="/login">Admin</Link>
 					</h3>
 				</div>
 			</div>
